@@ -15,6 +15,14 @@ DiceHandlerTest >> testAdding [
 ]
 
 { #category : #tests }
+DiceHandlerTest >> testAddingHandlers [
+	| h |
+	h := 2 D20 + 3 D6.
+	self assert: h diceNumber equals: 5.
+	self assert: h maxValue equals: 58
+]
+
+{ #category : #tests }
 DiceHandlerTest >> testAddingTheSameDieTwice [
 	| h |
 	h := DiceHandler new

@@ -7,10 +7,29 @@ Class {
 	#category : #Dice
 }
 
+{ #category : #operations }
+DiceHandler >> + aDiceHandler [
+	| handler |
+	handler := self class new.
+	dice do: [ :each | handler addDie: each ].
+	aDiceHandler dice do: [ :each | handler addDie: each ].
+	^ handler
+]
+
 { #category : #adding }
 DiceHandler >> addDie: aDie [ 
 	dice add: aDie
 	
+]
+
+{ #category : #accessing }
+DiceHandler >> dice [
+	^ dice
+]
+
+{ #category : #accessing }
+DiceHandler >> dice: anObject [
+	dice := anObject
 ]
 
 { #category : #accessing }
