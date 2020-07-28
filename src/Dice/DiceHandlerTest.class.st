@@ -35,6 +35,14 @@ DiceHandlerTest >> testMaxValue [
 ]
 
 { #category : #tests }
+DiceHandlerTest >> testNewSyntax [
+	| h |
+	h := 3 D6.
+	self assert: h diceNumber equals: 3.
+	self assert: h maxValue equals: 18
+]
+
+{ #category : #tests }
 DiceHandlerTest >> testRoll [
 	| h |
 	h := DiceHandler new 
