@@ -33,6 +33,14 @@ DiceHandlerTest >> testAddingTheSameDieTwice [
 ]
 
 { #category : #tests }
+DiceHandlerTest >> testCountFaces [
+	| h |
+	h := DiceHandler count: 2 faces: 50.
+	self assert: h diceNumber equals: 2.
+	self assert: h maxValue equals: 100
+]
+
+{ #category : #tests }
 DiceHandlerTest >> testMaxValue [
 	| h |
 	h := DiceHandler new
@@ -48,6 +56,21 @@ DiceHandlerTest >> testNewSyntax [
 	h := 3 D6.
 	self assert: h diceNumber equals: 3.
 	self assert: h maxValue equals: 18
+]
+
+{ #category : #tests }
+DiceHandlerTest >> testNewSyntaxArbitraryDNumber [
+	| h |
+	h := 3 D500.
+	self assert: h diceNumber equals: 3.
+	self assert: h maxValue equals: 1500
+]
+
+{ #category : #tests }
+DiceHandlerTest >> testNewSyntaxWrong [
+	self should: [ 3 DXXX ] raise: Exception.
+	self should: [ 3 D0 ] raise: Exception.
+	self should: [ 3 something ] raise: Exception.
 ]
 
 { #category : #tests }

@@ -7,6 +7,14 @@ Class {
 	#category : #Dice
 }
 
+{ #category : #initialization }
+DiceHandler class >> count: aNumber faces: aNumberOfFaces [ 
+	| handler |
+	handler := DiceHandler new.
+	aNumber timesRepeat: [ handler addDie: (Die faces: aNumberOfFaces) ].
+	^ handler
+]
+
 { #category : #operations }
 DiceHandler >> + aDiceHandler [
 	| handler |
