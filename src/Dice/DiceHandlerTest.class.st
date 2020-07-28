@@ -23,3 +23,26 @@ DiceHandlerTest >> testAddingTheSameDieTwice [
 		
 	self assert: h diceNumber equals: 2
 ]
+
+{ #category : #tests }
+DiceHandlerTest >> testMaxValue [
+	| h |
+	h := DiceHandler new
+		addDie: (Die faces: 6);
+		addDie: (Die faces: 6); yourself.
+		
+	self assert: h maxValue equals: 12
+]
+
+{ #category : #tests }
+DiceHandlerTest >> testRoll [
+	| h |
+	h := DiceHandler new 
+		addDie: (Die faces: 6);
+		addDie: (Die faces: 10);
+		yourself.
+		
+	1000 timesRepeat: [
+		self assert: (h roll between: 1 and: h maxValue)
+	]
+]
